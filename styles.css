@@ -1,0 +1,17 @@
+a[href^="address"],
+a[href^="tel"] {
+    color: black;
+    text-decoration: none;
+  }
+
+a[href^="address"]::before {
+    content: "🏢 ";
+  }
+
+a[href^="company_mailto"]::before {
+    content: "📧 ";
+  }
+  
+a[href^="tel"]::before {
+    content: "📞 ";
+    }
