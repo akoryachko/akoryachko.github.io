@@ -234,7 +234,7 @@
     code span.vs { color: #cc9393; } /* VerbatimString */
     code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
   </style>
-  <style>body{max-width:800px}</style>
+  <style>body{max-width:900px}</style>
 </head>
 <body>
 <h1 id="from-pyspark-notebook-to-production-ready-code">From PySpark
@@ -499,7 +499,7 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a h
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>logger.setLevel(logging.DEBUG) <span class="co"># lowest level to capture by the logger</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>logger.handlers.clear() <span class="co"># remove existing handlers to not accidentally duplicate them</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>sh <span class="op">=</span> logging.StreamHandler() <span class="co"># handler for printing messages to console</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>sh <span class="op">=</span> logging.StreamHandler() <span class="co"># handler for printing messages to console. Will need a file handler in prod</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>sh.setLevel(logging.INFO) <span class="co"># lowest level for the handler to display</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> logging.Formatter(<span class="st">&quot;[</span><span class="sc">%(asctime)s</span><span class="st">] </span><span class="sc">%(levelname)s</span><span class="st">: </span><span class="sc">%(message)s</span><span class="st">&quot;</span>, <span class="st">&quot;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M&quot;</span>)</span>
