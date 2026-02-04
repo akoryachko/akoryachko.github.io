@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>blogpost</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cccccc; background-color: #303030; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ffcfaf; } /* Alert */
+    code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #dca3a3; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #f0dfaf; } /* ControlFlow */
+    code span.ch { color: #dca3a3; } /* Char */
+    code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+    code span.co { color: #7f9f7f; } /* Comment */
+    code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+    code span.do { color: #7f9f7f; } /* Documentation */
+    code span.dt { color: #dfdfbf; } /* DataType */
+    code span.dv { color: #dcdccc; } /* DecVal */
+    code span.er { color: #c3bf9f; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #c0bed1; } /* Float */
+    code span.fu { color: #efef8f; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+    code span.kw { color: #f0dfaf; } /* Keyword */
+    code span.op { color: #f0efd0; } /* Operator */
+    code span.ot { color: #efef8f; } /* Other */
+    code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+    code span.sc { color: #dca3a3; } /* SpecialChar */
+    code span.ss { color: #cc9393; } /* SpecialString */
+    code span.st { color: #cc9393; } /* String */
+    code span.va { } /* Variable */
+    code span.vs { color: #cc9393; } /* VerbatimString */
+    code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+  </style>
+  <style>body{max-width:800px}</style>
+</head>
+<body>
+<h1 id="from-pyspark-notebook-to-production-ready-code">From PySpark
+Notebook to Production-Ready Code</h1>
+<h2 id="motivation">Motivation</h2>
+<p>The gap between a working notebook and maintainable production code
+is significant, especially in teams where people specialize in different
+parts of the project lifecycle. Situations where data scientists throw a
+proof-of-concept notebook over the fence to engineers are common.
+Engineers then take the logic as-is, wrap it into a scheduled job, and
+move on. This approach often results in solutions that are hard to
+understand, modify, and maintain. The problem is amplified in big-data
+applications: data scientists may lack production-grade coding
+experience, while engineers may not feel confident untangling long,
+monolithic PySpark queries.</p>
+<h2 id="purpose">Purpose</h2>
+<p>This post focuses on practical techniques for bridging the gap
+between a free-form PySpark notebook and modular, production-ready code.
+The goal is twofold: - Help data scientists write code that is more
+readable and reusable. - Give engineers confidence to reshape PySpark
+logic so that it aligns with standard software engineering
+practices.</p>
+<h2 id="who-this-post-is-for">Who this post is for</h2>
+<ul>
+<li>Data scientists whose PySpark notebooks eventually need to run in
+production.</li>
+<li>Data engineers inheriting notebook-based logic.</li>
+<li>Teams struggling with unclear ownership between experimentation and
+implementation.</li>
+</ul>
+<h2 id="approach">Approach</h2>
+<p>We will walk through an example notebook that trains a model to
+predict taxi ride tip amounts. The notebook works, but most of the logic
+lives in a single long PySpark query that might be difficult to
+understand. Even the author will have issues untangling the logic after
+some time at another project.</p>
+<p>We will progressively refactor this notebook, breaking the logic into
+functions, modules, and tests. Each stage represents a different level
+of maintainability. You can stop at any stage once your project’s
+requirements are satisfied. Projects have very different needs: from a
+one-off analysis with no maintenance requirements to a business-critical
+system with strict SLAs. The stages below intentionally scale from
+minimal to rigorous.</p>
+<h2 id="example-project">Example project</h2>
+<p>Assume the following (artificial but realistic) task. We want to
+train a model that predicts the tip amount for New York City taxi rides
+based on trip information. The requirements are: - Use NYC taxi data
+(pickup/dropoff timestamps, locations, fares, etc.). - Keep only the
+first three evening rides per pickup location per day. - Exclude trips
+to or from airports. - Track feature importance and evaluation metrics
+for each run. - Retrain the model regularly.</p>
+<h2 id="stage-0.-notebook-solution">Stage 0. Notebook solution</h2>
+<p><em>Suitable only for one-time analysis or proof-of-concept
+work.</em></p>
+<p>The full prototype notebook for the project can be found <a
+href="https://github.com/akoryachko/blog_posts/blob/main/pyspark_to_production/notebooks/prototype.ipynb">here</a>.
+Set up instructions for running the notebook locally are in the <a
+href="https://github.com/akoryachko/blog_posts/blob/main/pyspark_to_production/README.md"><code>README.md</code></a>
+of the same repo.</p>
+<p>At this stage, correctness matters more than structure. The notebook
+produces the desired output, and maintainability is not yet a concern.
+Getting the desired output once does not guarantee successful runs in
+the future. Debugging will be challenging as well. Hence, extra work is
+required to extend the application scope.</p>
+<h2 id="stage-1.-refactored-notebook">Stage 1. Refactored notebook</h2>
+<p><em>Suitable for non-critical code that needs to be rerun
+occasionally.</em></p>
+<p>Once the notebook produces correct results for a single run, it is
+time to make it readable and easier to reason about. The main goals are:
+- Clear structure - Reduced duplication - Traceable execution</p>
+<h3 id="step-1.1.-put-code-in-functions">Step 1.1. Put code in
+functions</h3>
+<h4 id="extracting-dataset-loading">Extracting dataset loading</h4>
+<p>We start by removing duplication in dataset loading:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> DataFrame</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_dataset(dataset_name: <span class="bu">str</span>) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    file_path <span class="op">=</span> <span class="ss">f&quot;../data/</span><span class="sc">{</span>dataset_name<span class="sc">}</span><span class="ss">.csv&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> spark.read.csv(file_path, header<span class="op">=</span><span class="va">True</span>, inferSchema<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract() <span class="op">-&gt;</span> <span class="bu">dict</span>[<span class="bu">str</span>, DataFrame]:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    dataset_names <span class="op">=</span> [</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;taxi_trip_data&quot;</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;taxi_zone_geo&quot;</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {dataset_name: read_dataset(dataset_name) <span class="cf">for</span> dataset_name <span class="kw">in</span> dataset_names}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>sdfs <span class="op">=</span> extract()</span></code></pre></div>
+<p>Datasets now live in a single dictionary (<code>sdfs</code>), keyed
+by name, which simplifies downstream logic.</p>
+<h4 id="splitting-the-logic-into-functional-pieces">Splitting the logic
+into functional pieces</h4>
+<p>The core processing logic in the prototype notebook is implemented as
+a single chained PySpark query.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sdf_prepared_data <span class="op">=</span> (</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    sdf_taxi_data</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    .dropDuplicates()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># keep only the evening rides in a time range</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(F.date_format(F.col(<span class="st">&quot;pickup_datetime&quot;</span>), <span class="st">&quot;yyyyMM&quot;</span>) <span class="op">&gt;</span> <span class="st">&quot;201703&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(F.date_format(F.col(<span class="st">&quot;pickup_datetime&quot;</span>), <span class="st">&quot;yyyyMM&quot;</span>) <span class="op">&lt;=</span> <span class="st">&quot;201811&quot;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(F.date_format(F.col(<span class="st">&quot;dropoff_datetime&quot;</span>), <span class="st">&quot;HH&quot;</span>) <span class="op">&gt;=</span> <span class="st">&quot;17&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(F.date_format(F.col(<span class="st">&quot;dropoff_datetime&quot;</span>), <span class="st">&quot;HH&quot;</span>) <span class="op">&lt;=</span> <span class="st">&quot;23&quot;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove rides to and from the airport</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    .join(</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        sdf_taxi_zone_geo</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        .withColumnRenamed(<span class="st">&quot;zone_id&quot;</span>, <span class="st">&quot;pickup_location_id&quot;</span>),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        on<span class="op">=</span><span class="st">&quot;pickup_location_id&quot;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    .withColumnRenamed(<span class="st">&quot;zone_name&quot;</span>, <span class="st">&quot;pickup_zone_name&quot;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    .withColumnRenamed(<span class="st">&quot;borough&quot;</span>, <span class="st">&quot;pickup_borough&quot;</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(<span class="op">~</span>F.lower(F.col(<span class="st">&quot;pickup_zone_name&quot;</span>)).like(<span class="st">&quot;%airport%&quot;</span>))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    .join(</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        sdf_taxi_zone_geo</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        .withColumnRenamed(<span class="st">&quot;zone_id&quot;</span>, <span class="st">&quot;dropoff_location_id&quot;</span>),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        on<span class="op">=</span><span class="st">&quot;dropoff_location_id&quot;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    .withColumnRenamed(<span class="st">&quot;zone_name&quot;</span>, <span class="st">&quot;dropoff_zone_name&quot;</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    .withColumnRenamed(<span class="st">&quot;borough&quot;</span>, <span class="st">&quot;dropoff_borough&quot;</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(<span class="op">~</span>F.lower(F.col(<span class="st">&quot;dropoff_zone_name&quot;</span>)).like(<span class="st">&quot;%airport%&quot;</span>))</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># take the first 3 rides per day for each pickup location</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    .withColumn(</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;row_number&quot;</span>,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        F.row_number()</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        .over(</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>            Window</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            .partitionBy(</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;pickup_location_id&quot;</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                F.date_format(F.col(<span class="st">&quot;pickup_datetime&quot;</span>), <span class="st">&quot;ddMMyyyy&quot;</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            .orderBy(F.asc(<span class="st">&quot;pickup_datetime&quot;</span>))</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(F.col(<span class="st">&quot;row_number&quot;</span>) <span class="op">&lt;</span> <span class="dv">4</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># features engineering</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    .withColumn(<span class="st">&quot;month&quot;</span>, F.month(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    .withColumn(<span class="st">&quot;day_of_week&quot;</span>, F.dayofweek(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    .withColumn(<span class="st">&quot;day_of_month&quot;</span>, F.dayofmonth(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    .withColumn(</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;store_and_fwd_flag&quot;</span>,</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        F.when(F.col(<span class="st">&quot;store_and_fwd_flag&quot;</span>) <span class="op">==</span> <span class="st">&quot;N&quot;</span>, <span class="dv">0</span>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        .otherwise(<span class="dv">1</span>)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    .withColumn(<span class="st">&quot;random_number&quot;</span>, F.rand())</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>While concise, it hides intent and makes modification risky.</p>
+<p>We group related filters into functions and expose their parameters
+explicitly:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>history_start_month <span class="op">=</span> <span class="st">&quot;201703&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>history_end_month <span class="op">=</span> <span class="st">&quot;201811&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> limit_history_to_a_range(sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    pickup_month <span class="op">=</span> F.date_format(F.col(<span class="st">&quot;pickup_datetime&quot;</span>), <span class="st">&quot;yyyyMM&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        sdf</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(pickup_month <span class="op">&gt;</span> history_start_month)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(pickup_month <span class="op">&lt;=</span> history_end_month)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<p>Parameters are kept outside functions to make them easy to override
+later (e.g., via runtime configuration).</p>
+<h4 id="chaining-logic-with-.transform">Chaining logic with
+<code>.transform()</code></h4>
+<p>Instead of creating a new dataframe variable for each step, we use
+<code>.transform()</code> (available in Spark 2.x+):</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sdf_prepared_data <span class="op">=</span> (</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    .dropDuplicates()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    .transform(limit_history_to_a_range)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    .transform(keep_evening_rides_only)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>This pattern keeps the pipeline linear, readable, and easy to modify
+during debugging. The <code>.transform()</code> method can also take
+additional parameters:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> exclude_airports_by_location(sdf: DataFrame, location_id_col_name: <span class="bu">str</span>) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    sdf_zone_geo_airport <span class="op">=</span> (</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        sdfs[<span class="st">&quot;taxi_zone_geo&quot;</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(F.lower(F.col(<span class="st">&quot;zone_name&quot;</span>)).like(<span class="st">&quot;%airport%&quot;</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        sdf</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        .join(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            sdf_zone_geo_airport,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            on<span class="op">=</span>[F.col(location_id_col_name) <span class="op">==</span> F.col(<span class="st">&quot;zone_id&quot;</span>)],</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            how<span class="op">=</span><span class="st">&quot;leftanti&quot;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<p>Thus, we can reuse the function for both the pickup and drop off
+locations:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sdf_prepared_data <span class="op">=</span> (</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    .transform(exclude_airports_by_location, <span class="st">&quot;pickup_location_id&quot;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    .transform(exclude_airports_by_location, <span class="st">&quot;dropoff_location_id&quot;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h4 id="grouping-logic-into-abstraction-levels">Grouping logic into
+abstraction levels</h4>
+<p>Filtering and feature engineering form logical units in the
+transformation step of the code:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_data(sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        sdf</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        .dropDuplicates()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        .transform(limit_history_to_a_range)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        .transform(keep_evening_rides_only)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        .transform(exclude_airports_by_location, <span class="st">&quot;pickup_location_id&quot;</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        .transform(exclude_airports_by_location, <span class="st">&quot;dropoff_location_id&quot;</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        .transform(keep_first_n_daily_rides_only)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_features(sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        sdf</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;month&quot;</span>, F.month(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;day_of_week&quot;</span>, F.dayofweek(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;day_of_month&quot;</span>, F.dayofmonth(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        .withColumn(</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;store_and_fwd_flag&quot;</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            F.when(F.col(<span class="st">&quot;store_and_fwd_flag&quot;</span>) <span class="op">==</span> <span class="st">&quot;N&quot;</span>, <span class="dv">0</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>            .otherwise(<span class="dv">1</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transform() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    sdfs[<span class="st">&quot;prepared_data&quot;</span>] <span class="op">=</span> (</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>]</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        .transform(filter_data)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        .transform(add_features)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<p>At this point, the executable logic shrinks to an ETL-like
+skeleton:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sdfs <span class="op">=</span> extract()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>transform()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> train()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>validate()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>load()</span></code></pre></div>
+<h3 id="step-1.2.-add-logging">Step 1.2. Add logging</h3>
+<p><code>print()</code> statements are acceptable in prototypes but not
+in production. Replacing them with logging early avoids churn later. A
+minimal setup below would allow for keeping the printed output while
+replacing the <code>print()</code> statements with
+<code>logger.info()</code>:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> logging.getLogger(<span class="st">&#39;tip_amount_model_logger&#39;</span>)</span></code></pre></div>
+<p>An extended setup allows consistent formatting and future redirection
+to files or logging systems:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> logging.getLogger(<span class="st">&quot;tip_amount_model_logger&quot;</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>logger.setLevel(logging.DEBUG) <span class="co"># lowest level to capture by the logger</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>logger.handlers.clear() <span class="co"># remove existing handlers to not accidentally duplicate them</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>sh <span class="op">=</span> logging.StreamHandler() <span class="co"># handler for printing messages to console</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>sh.setLevel(logging.INFO) <span class="co"># lowest level for the handler to display</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> logging.Formatter(<span class="st">&quot;[</span><span class="sc">%(asctime)s</span><span class="st">] </span><span class="sc">%(levelname)s</span><span class="st">: </span><span class="sc">%(message)s</span><span class="st">&quot;</span>, <span class="st">&quot;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M&quot;</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>sh.setFormatter(f)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>logger.addHandler(sh)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Tip amount model logger is initialized!&quot;</span>)</span></code></pre></div>
+<p>Notebook with the refactored code can be found <a
+href="https://github.com/akoryachko/blog_posts/blob/main/pyspark_to_production/notebooks/prototype_refactored.ipynb">here</a>.</p>
+<h2 id="stage-2.-code-in-modules">Stage 2. Code in modules</h2>
+<p><em>Suitable for code maintained by more than one person.</em></p>
+<p>Notebooks are convenient for exploration but awkward for
+collaboration and version control. Reading flow is inverted (low-level
+functions first) and merge request diffs are noisy.</p>
+<p>Moving code into Python modules improves readability, collaboration,
+and testability. I added the functionality to <code>.py</code> files in
+the <code>src</code> directory of <a
+href="https://github.com/akoryachko/blog_posts/tree/main/pyspark_to_production">the
+repo</a>.</p>
+<h3 id="step-2.1.-main-module">Step 2.1. Main module</h3>
+<p>Most logic lives in <code>tip_amount_model.py</code>.</p>
+<p>Shared parameters are grouped into a configuration dataclass:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TipAmountModelConfig:</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    history_start_month: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;201703&quot;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    history_end_month: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;201811&quot;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    first_evening_hour: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;17&quot;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    last_evening_hour: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;23&quot;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    n_first_daily_rides_to_keep: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    test_fraction: <span class="bu">float</span> <span class="op">=</span> <span class="fl">0.2</span></span></code></pre></div>
+<p>Another class holds the logic and shared variables to enable the
+computations:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TipAmountModel():</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, config: TipAmountModelConfig) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.config <span class="op">=</span> config</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sdfs <span class="op">=</span> {}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        ...</span></code></pre></div>
+<p>A single <code>run()</code> method defines the table of contents for
+the job:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TipAmountModel():</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> run(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.extract()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.transform()</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.train()</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.validate()</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.load()</span></code></pre></div>
+<p>Lower-level methods follow immediately after their callers,
+preserving top-down readability:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> extract(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        logger.info(<span class="st">&quot;Extracting datasets&quot;</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        dataset_names <span class="op">=</span> [</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;taxi_trip_data&quot;</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;taxi_zone_geo&quot;</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> dataset_name <span class="kw">in</span> dataset_names:</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.read_dataset(dataset_name)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> read_dataset(<span class="va">self</span>, dataset_name: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        path_here <span class="op">=</span> Path(<span class="va">__file__</span>).resolve()</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        file_path <span class="op">=</span> path_here.parent.parent <span class="op">/</span> <span class="st">&quot;data&quot;</span> <span class="op">/</span> <span class="ss">f&quot;</span><span class="sc">{</span>dataset_name<span class="sc">}</span><span class="ss">.csv&quot;</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sdfs[dataset_name] <span class="op">=</span> <span class="va">self</span>.spark.read.csv(</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">str</span>(file_path), header<span class="op">=</span><span class="va">True</span>, inferSchema<span class="op">=</span><span class="va">True</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> transform(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        logger.info(<span class="st">&quot;Preparing the data for training&quot;</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sdfs[<span class="st">&quot;prepared_data&quot;</span>] <span class="op">=</span> (</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>]</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            .transform(<span class="va">self</span>.filter_data)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>            .transform(<span class="va">self</span>.add_features)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> filter_data(<span class="va">self</span>, sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>            sdf</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>            .dropDuplicates()</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>            .transform(<span class="va">self</span>.limit_history_to_a_range)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>            .transform(<span class="va">self</span>.keep_evening_rides_only)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>            ...</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> limit_history_to_a_range(<span class="va">self</span>, sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> keep_evening_rides_only(<span class="va">self</span>, sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>        ...</span></code></pre></div>
+<h3 id="step-2.2.-script-with-parameters">Step 2.2. Script with
+parameters</h3>
+<p>Running the job from the command line with parameters makes it easy
+to iterate on experiments in an automated and reproducible way. This
+requires a few small additions that allow the module to be executed as a
+script, for example:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pyspark_to_production.src.tip_amount_model <span class="dt">\</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--n-first-daily-rides-to-keep</span> 5 <span class="dt">\</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--test-fraction</span> 0.01</span></code></pre></div>
+<h4 id="add-parameter-parser">2.2.1. Add parameter parser</h4>
+<p>The function below creates command-line arguments for all fields
+defined in the configuration dataclass:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> fields</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dataclass_to_argparser(cls) <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> fields(cls):</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        parser.add_argument(</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f&quot;--</span><span class="sc">{</span>f<span class="sc">.</span>name<span class="sc">.</span>replace(<span class="st">&#39;_&#39;</span>, <span class="st">&#39;-&#39;</span>)<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>            default<span class="op">=</span>f.default,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>            <span class="bu">type</span><span class="op">=</span>f.<span class="bu">type</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parser</span></code></pre></div>
+<p>This approach ensures that: - all configuration parameters are
+exposed automatically, - defaults remain defined in a single place (the
+dataclass), - adding a new configuration option requires no changes to
+the argument-parsing logic.</p>
+<h4 id="add-a-main-entry-point">2.2.2. Add a <code>main</code> entry
+point</h4>
+<p>The <code>__main__</code> block allows the tip_amount_model.py module
+to be executed directly, with parameters passed from the command
+line:</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> dataclass_to_argparser(TipAmountModelConfig)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> TipAmountModelConfig(<span class="op">**</span><span class="bu">vars</span>(args))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    job <span class="op">=</span> TipAmountModel(config)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    job.run()</span></code></pre></div>
+<h4 id="add-module-markers">2.2.3. Add module markers</h4>
+<p>To allow Python to resolve imports correctly when running the script
+from outside the project directory, add empty <code>__init__.py</code>
+files to: - the project root, - the src directory.</p>
+<p>This marks both directories as Python packages and enables execution
+via <code>python -m ...</code> instead of relying on relative paths or
+manual <code>PYTHONPATH</code> manipulation.</p>
+<h3 id="step-2.3.-supporting-modules">Step 2.3. Supporting modules</h3>
+<p>Reusable infrastructure such as logging deserves <a
+href="https://github.com/akoryachko/blog_posts/blob/main/pyspark_to_production/src/log_config.py">its
+own module</a>. A shared logging setup ensures consistent conventions
+across jobs by calling:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark_to_production.src.log_config <span class="im">import</span> get_logger</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> get_logger(<span class="va">__name__</span>)</span></code></pre></div>
+<p>Any function used across jobs should follow the logging module suite
+and be imported as opposed to defined within a job module. One caveat
+with independent functions is that all parameters for such a function
+should be passed instead of being available through
+<code>self</code>.</p>
+<h3 id="step-2.4.-notebook-interaction">Step 2.4. Notebook
+interaction</h3>
+<p>Even with production code in modules, notebooks remain useful for
+debugging and experimentation.</p>
+<h4 id="debugging">2.4.1. Debugging</h4>
+<p>Debugging module-based code from a notebook is primarily about
+<strong>shortening the feedback loop</strong> between code changes and
+observed behavior.</p>
+<p>The typical debugging workflow consists of three steps: 1. Make the
+project modules importable. 1. Instantiate the job and run it. 1.
+Inspect intermediate state and iterate.</p>
+<p><strong>Make modules available for import</strong><br />
+Because the notebook lives outside the src directory, Python does not
+automatically know where to find the project modules. One simple way to
+fix this in a notebook is to add the project root to Python’s import
+path:</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">&#39;../..&#39;</span>)</span></code></pre></div>
+<p>Here we add the <code>blog_posts</code> directory (two levels above
+<code>notebooks</code>) to Python’s module search path, making
+<code>pyspark_to_production</code> importable.</p>
+<p><strong>Create job objects</strong><br />
+Next, import the main classes and create the configuration and job
+instances:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark_to_production.src.tip_amount_model <span class="im">import</span> TipAmountModelConfig, TipAmountModel</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> TipAmountModelConfig()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>job <span class="op">=</span> TipAmountModel(config)</span></code></pre></div>
+<p>At this point: - All configuration parameters are accessible via
+<code>job.config</code>. - The Spark session and internal state live
+inside the <code>job</code> object.</p>
+<p><strong>Run the job</strong><br />
+Finally, run the full pipeline to ensure that everything works
+end-to-end: In our case it is:</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>job.run()</span></code></pre></div>
+<p>If an error occurs, the stack trace will point directly to the
+failing method in the module code, making it clear where to
+investigate.</p>
+<p><strong>Inspect intermediate results</strong><br />
+One advantage of the class-based design is that intermediate artifacts
+are preserved on the job instance. Any dataset stored in
+<code>self.sdfs</code> can be inspected interactively.</p>
+<p>For example, to inspect the training dataset:</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>job.sdfs[<span class="st">&quot;training&quot;</span>].show(<span class="dv">5</span>)</span></code></pre></div>
+<p><strong>Iterate on fixes</strong><br />
+After fixing a bug in the module code, you have two options: 1.
+<strong>Restart the notebook.</strong> This guarantees that all module
+changes are picked up, but it is slower. 2. <strong>Enable automatic
+reloading.</strong> Jupyter can automatically reload modified modules
+before each execution by using magic commands:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code></pre></div>
+<h4 id="experimentation">2.4.2. Experimentation</h4>
+<p>One of the main advantages of interacting with the job through a
+notebook is the ability to experiment quickly while still using
+production-ready code. Experimentation typically falls into two
+categories: parameter tuning and prototyping new logic.</p>
+<p><strong>Parameter-level experimentation</strong> Many experiments can
+be performed by simply modifying configuration values and rerunning the
+relevant stages. This is the safest and fastest way to explore model
+behavior, as it requires no code changes.</p>
+<p>For example, to evaluate the impact of a smaller test set, update the
+configuration directly on the job instance and rerun the training and
+validation stages:</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>job.config.test_fraction <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>job.train()</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>job.validate()</span></code></pre></div>
+<p>Because the pipeline stages are independent, only the affected parts
+need to be rerun. This makes parameter tuning fast and encourages
+systematic experimentation.</p>
+<p><strong>Local prototyping</strong> Some experiments go beyond
+parameter changes and require trying out new ideas that are not yet part
+of the production code. For example, you may want to quickly try out a
+different model or a feature-processing tweak. In such cases, the goal
+is to prototype <strong>without modifying the repository</strong>,
+keeping experiments local to the notebook.</p>
+<p>Suppose we want to try a Gradient-Boosted Tree regressor instead of
+the default model. We can define a modified training function directly
+in a notebook cell:</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml <span class="im">import</span> Pipeline</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> VectorAssembler</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.regression <span class="im">import</span> GBTRegressor</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_model(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    assembler <span class="op">=</span> VectorAssembler(inputCols<span class="op">=</span><span class="va">self</span>.feature_cols, outputCol<span class="op">=</span><span class="st">&quot;features&quot;</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    gbt <span class="op">=</span> GBTRegressor(</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        labelCol<span class="op">=</span><span class="st">&quot;tip_amount&quot;</span>,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>        featuresCol<span class="op">=</span><span class="st">&quot;features&quot;</span>,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>        predictionCol<span class="op">=</span><span class="st">&quot;prediction&quot;</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>        stepSize<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        maxDepth<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        featureSubsetStrategy<span class="op">=</span><span class="st">&quot;auto&quot;</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        seed<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    pipeline <span class="op">=</span> Pipeline(stages<span class="op">=</span>[assembler, gbt])</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.model <span class="op">=</span> pipeline.fit(<span class="va">self</span>.sdfs[<span class="st">&quot;training&quot;</span>])</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Modified content&quot;</span>)</span></code></pre></div>
+<p>The function can then be dynamically bound to the existing job
+instance:</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> types</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>job.train_model <span class="op">=</span> types.MethodType(train_model, job)</span></code></pre></div>
+<p>After that, the modified logic can be exercised by rerunning the
+relevant stages:</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>job.train()</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>job.validate()</span></code></pre></div>
+<p>This approach allows rapid exploration of alternative implementations
+while preserving a clean separation between experimental code and the
+production codebase. However, if the experiment grows, becomes
+reproducible, or needs team review, a proper repository branch will be a
+better choice.</p>
+<p>All examples shown in this section are available in the <a
+href="https://github.com/akoryachko/blog_posts/blob/main/pyspark_to_production/notebooks/playground.ipynb">playground
+notebook</a>.</p>
+<h2 id="stage-3.-unit-tests">Stage 3. Unit tests</h2>
+<p><em>Required for time-critical or frequently changing
+systems.</em></p>
+<p>Code changes introduce bugs far more often than we would like. The
+goal of unit testing is to catch those bugs before they reach
+production, reducing rollbacks, hot fixes, and firefighting.</p>
+<h3 id="step-3.1.-checks-in-a-notebook-cell">Step 3.1. Checks in a
+notebook cell</h3>
+<p>The fastest way to start unit testing is to write simple behavioral
+checks directly in the module-interaction notebook from the previous
+stage. As an example, let’s verify that the <code>add_features()</code>
+function actually produces the feature columns listed in
+<code>feature_cols</code>:</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_subset(a: <span class="bu">list</span>, b: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">set</span>(a) <span class="op">&lt;=</span> <span class="bu">set</span>(b)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    (datetime(<span class="dv">2021</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">&quot;Y&quot;</span>),</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    (datetime(<span class="dv">2021</span>, <span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">30</span>, <span class="dv">0</span>), <span class="st">&quot;N&quot;</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>expected_columns <span class="op">=</span> job.feature_cols[<span class="op">-</span><span class="dv">4</span>:]</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>sdf_fake_input <span class="op">=</span> job.spark.createDataFrame(</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    data, schema<span class="op">=</span>[<span class="st">&quot;pickup_datetime&quot;</span>, <span class="st">&quot;store_and_fwd_flag&quot;</span>]</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="kw">not</span> is_subset(expected_columns, sdf_fake_input.columns)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>sdf_fake_features <span class="op">=</span> job.add_features(sdf_fake_input)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> is_subset(expected_columns, sdf_fake_features.columns)</span></code></pre></div>
+<p>This test: - creates minimal fake input data, - verifies that feature
+columns are not present before transformation, - and confirms that they
+appear after <code>add_features()</code> is applied.</p>
+<p>Even simple checks like this are effective at catching accidental
+column renames or mismatches between transformation logic and
+configuration.</p>
+<h3 id="step-3.2.-function-in-a-notebook-cell">Step 3.2. Function in a
+notebook cell</h3>
+<p>While inline notebook checks work, they quickly become problematic: -
+they reuse shared state (job) across tests, - fake data generation is
+duplicated, - schema changes require editing multiple cells.</p>
+<p>To address this, we refactor the test logic into self-contained test
+functions and introduce reusable fake data generators.</p>
+<p><strong>Reusable fake data generation</strong><br />
+We start by defining lightweight schema classes and a helper function to
+generate PySpark Row objects with defaults:</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> Row</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timezone</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> TypeVar, Type</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass, asdict</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>CT <span class="op">=</span> TypeVar(<span class="st">&quot;CT&quot;</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Trip:</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    vendor_id: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    pickup_datetime: datetime <span class="op">=</span> datetime(<span class="dv">2018</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">0</span>, tzinfo<span class="op">=</span>timezone.utc)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    dropoff_datetime: datetime <span class="op">=</span> datetime(<span class="dv">2018</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">19</span>, <span class="dv">30</span>, <span class="dv">0</span>, tzinfo<span class="op">=</span>timezone.utc)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    passenger_count: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    trip_distance: <span class="bu">float</span> <span class="op">=</span> <span class="fl">50.2</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    rate_code: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    store_and_fwd_flag: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;N&quot;</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    payment_type: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    fare_amount: <span class="bu">float</span> <span class="op">=</span> <span class="fl">10.5</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    extra: <span class="bu">float</span> <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    mta_tax: <span class="bu">float</span> <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    tip_amount: <span class="bu">float</span> <span class="op">=</span> <span class="fl">0.8</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    tolls_amount: <span class="bu">float</span> <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    imp_surcharge: <span class="bu">float</span> <span class="op">=</span> <span class="fl">1.2</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>    total_amount: <span class="bu">float</span> <span class="op">=</span> <span class="fl">15.2</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    pickup_location_id: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>    dropoff_location_id: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ZoneGeo:</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>    zone_id: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    zone_name: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Snack Zone&quot;</span></span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>    borough: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Food Borough&quot;</span></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_rows(</span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>    data_class: Type[CT],</span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>    data: <span class="bu">list</span>[<span class="bu">tuple</span>] <span class="op">=</span> [()],</span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>    columns: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> []</span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="bu">list</span>[Row]:</span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>    generated_rows <span class="op">=</span> []</span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> record <span class="kw">in</span> data:</span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>        record_dict <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(columns, record))</span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>        record_class <span class="op">=</span> data_class(<span class="op">**</span>record_dict)</span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>        record_row <span class="op">=</span> Row(<span class="op">**</span>asdict(record_class))</span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>        generated_rows.append(record_row)</span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> generated_rows</span></code></pre></div>
+<p>This setup allows each test to override only the fields it cares
+about, while the rest are filled with sensible defaults.</p>
+<p><strong>Test function</strong><br />
+With reusable data generation in place, we can write proper unit tests
+that exercise larger parts of the pipeline. The test function will then
+look like the follows:</p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_subset(a: <span class="bu">list</span>, b: <span class="bu">list</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">set</span>(a) <span class="op">&lt;=</span> <span class="bu">set</span>(b)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_add_features_column_names() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    tip_model <span class="op">=</span> TipAmountModel(TipAmountModelConfig())</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">&quot;pickup_datetime&quot;</span>, <span class="st">&quot;store_and_fwd_flag&quot;</span>]</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> [</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>        (datetime(<span class="dv">2021</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, tzinfo<span class="op">=</span>timezone.utc), <span class="st">&quot;Y&quot;</span>),</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>        (datetime(<span class="dv">2021</span>, <span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">9</span>, <span class="dv">30</span>, <span class="dv">0</span>, tzinfo<span class="op">=</span>timezone.utc), <span class="st">&quot;N&quot;</span>),</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    tip_model.sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>] <span class="op">=</span> tip_model.spark.createDataFrame(</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>        generate_rows(Trip, data, columns)</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    tip_model.sdfs[<span class="st">&quot;taxi_zone_geo&quot;</span>] <span class="op">=</span> tip_model.spark.createDataFrame(</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>        generate_rows(ZoneGeo)</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="kw">not</span> is_subset(tip_model.feature_cols, tip_model.sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>].columns)</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    tip_model.transform()</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> is_subset(tip_model.feature_cols, tip_model.sdfs[<span class="st">&quot;prepared_data&quot;</span>].columns)</span></code></pre></div>
+<p>This test verifies behavior at the level of the
+<code>transform()</code> stage, which is why we also provide a minimal
+fake <code>taxi_zone_geo</code> dataset.</p>
+<p><strong>Additional tests</strong></p>
+<p>The data-generation boilerplate becomes worthwhile once multiple
+tests reuse it. For example, we can validate that airport trips continue
+to be excluded:</p>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_exclude_airports_by_location() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">&quot;pickup_location_id&quot;</span>, <span class="st">&quot;dropoff_location_id&quot;</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> [</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="dv">100</span>),</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">100</span>, <span class="dv">100</span>),</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    tip_model <span class="op">=</span> TipAmountModel(TipAmountModelConfig())</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># no airports</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    tip_model.sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>] <span class="op">=</span> tip_model.spark.createDataFrame(</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>        generate_rows(Trip, data, columns)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    tip_model.sdfs[<span class="st">&quot;taxi_zone_geo&quot;</span>] <span class="op">=</span> tip_model.spark.createDataFrame(</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>        generate_rows(ZoneGeo, [(<span class="dv">100</span>, <span class="st">&quot;terrestrial&quot;</span>, ), [<span class="st">&quot;zone_id&quot;</span>, <span class="st">&quot;zone_name&quot;</span>]])</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    tip_model.transform()</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> tip_model.sdfs[<span class="st">&quot;prepared_data&quot;</span>].count() <span class="op">==</span> <span class="dv">3</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># all except one have airports</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    tip_model.sdfs[<span class="st">&quot;taxi_zone_geo&quot;</span>] <span class="op">=</span> tip_model.spark.createDataFrame(</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>        generate_rows(ZoneGeo, [(<span class="dv">100</span>, <span class="st">&quot;is airport or so&quot;</span>, )], [<span class="st">&quot;zone_id&quot;</span>, <span class="st">&quot;zone_name&quot;</span>])</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>    tip_model.transform()</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> tip_model.sdfs[<span class="st">&quot;prepared_data&quot;</span>].count() <span class="op">==</span> <span class="dv">0</span></span></code></pre></div>
+<p>Test functions can be executed directly from a notebook cell:</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>test_add_features_column_names()</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>test_exclude_airports_by_location()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div>
+<p>This approach keeps the feedback loop short while building tests that
+can later be moved into a proper test suite with minimal changes.</p>
+<p>All examples in this section are available in the <a
+href="https://github.com/akoryachko/blog_posts/blob/main/pyspark_to_production/notebooks/test.ipynb">test
+notebook</a>.</p>
+<h3 id="step-3.3.-testing-modules">Step 3.3. Testing modules</h3>
+<p>Notebook-based tests are far better than having no tests at all. They
+work well for small projects or exploratory code, but they do not scale
+to large, actively developed, production-facing systems.</p>
+<p>As the codebase grows, testing must be automated. A scalable testing
+setup should: - <strong>Run the full test suite.</strong> This provides
+a complete picture of what works and what breaks. Notebook execution
+stops at the first failing assertion, hiding downstream failures. -
+<strong>Run fast.</strong> Restarting and rerunning notebooks during
+debugging quickly becomes expensive. Tests should execute with minimal
+overhead to support rapid iteration. - <strong>Require minimal manual
+setup.</strong> Tests should not depend on a developer running them
+locally. Instead, they should run automatically as part of a CI pipeline
+before changes are merged into the production branch. Notebook creation
+and output inspection add unnecessary complexity in this context.</p>
+<p>To achieve this, the notebook-based test functions are moved into
+test modules. In this example, the tests are placed in
+<code>tests/unittests/test_tip_amount_model.py</code>. The tests
+themselves remain largely unchanged. The example uses
+<code>pytest</code>, while the standard <code>unittest</code> library
+could be used as well.</p>
+<p><strong>Sharing a Spark session across tests</strong><br />
+First, let’s define a single shared Spark session for all the tests
+because recreating it for every test is slow and wasteful. Adding a
+<code>pytest</code> fixture with session-level scope to the global
+settings module <code>conftest.py</code> will do the trick:</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections.abc <span class="im">import</span> Generator</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.fixture</span>(scope<span class="op">=</span><span class="st">&quot;session&quot;</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> spark() <span class="op">-&gt;</span> Generator:</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    spark: SparkSession <span class="op">=</span> (</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>        SparkSession.builder.master(<span class="st">&quot;local[*]&quot;</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>        .appName(<span class="st">&quot;testing&quot;</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">&quot;spark.driver.bindAddress&quot;</span>, <span class="st">&quot;127.0.0.1&quot;</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">&quot;spark.driver.host&quot;</span>, <span class="st">&quot;127.0.0.1&quot;</span>)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>        .getOrCreate()</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> spark</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    spark.sparkContext.stop()</span></code></pre></div>
+<p>An additional benefit of this set up is that tests can now depend on
+the Spark session directly, instead of pulling it from a job instance.
+The test signature changes accordingly:</p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_add_features_column_names(spark: SparkSession) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    tip_model.sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>] <span class="op">=</span> spark.createDataFrame(generate_rows(Trip, data, columns))</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div>
+<p><strong>Parameterizing tests</strong> <code>pytest</code> also allows
+running the same test logic with multiple input combinations. This is
+especially useful for validating edge cases and understanding exactly
+which inputs cause failures. For example, airport filtering can be
+tested as follows:</p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.mark.parametrize</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;pickup_location_id&quot;</span>, <span class="st">&quot;dropoff_location_id&quot;</span>, <span class="st">&quot;n_expected_rows&quot;</span>),</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">0</span>),</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">0</span>),</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_exclude_airports_by_location(</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    spark: SparkSession,</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    pickup_location_id: <span class="bu">int</span>,</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    dropoff_location_id: <span class="bu">int</span>,</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    n_expected_rows: <span class="bu">int</span>,</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">&quot;pickup_location_id&quot;</span>, <span class="st">&quot;dropoff_location_id&quot;</span>]</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> [(pickup_location_id, dropoff_location_id), ]</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>    tip_model.transform()</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> tip_model.sdfs[<span class="st">&quot;prepared_data&quot;</span>].count() <span class="op">==</span> n_expected_rows</span></code></pre></div>
+<p>Here we test each combination of pickup and dropoff locations
+separately and also passing how many rows we expect after the
+filtering.</p>
+<p><strong>Running the test suite</strong> Before running the tests,
+ensure that <code>__init__.py</code> files are present in both the
+project root and test directories so that Python can correctly resolve
+imports.</p>
+<p>Tests can then be executed from the project root with:</p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytest</span></code></pre></div>
+<p>Optional flags: - <code>-vv</code> to display test names; -
+<code>-s</code> to show print statements and logs.</p>
+<p><strong>Closing the loop</strong></p>
+<p>Once the test infrastructure is in place, additional test functions
+should be added to cover the rest of the pipeline logic. Tests should be
+updated alongside code changes and run automatically as part of the
+development workflow.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Notebooks are an excellent medium for exploration, but they are a
+poor long-term container for production logic. The problem is not the
+use of notebooks themselves, it is the lack of a clear path from
+experimentation to maintainable code.</p>
+<p>In this post, we walked through that path step by step: - Starting
+from a working but monolithic PySpark notebook, - Refactoring logic into
+readable, composable functions, - Moving code into modules with clear
+ownership and structure, - Preserving the notebook as a tool for
+debugging and experimentation, - And, finally, introducing automated
+tests to protect production behavior.</p>
+<p>Each stage represents a trade-off between speed and rigor. Not every
+project needs to reach the final stage, but every project benefits from
+knowing when to stop. A one-off analysis, a recurring internal report,
+and a business-critical pipeline all justify different levels of
+structure and testing.</p>
+<p>The key idea is not to “productionize everything”, but to design
+notebooks and modules so that evolution is possible. When code is
+structured with clear stages, explicit parameters, and testable units,
+the handoff between data scientists and engineers becomes collaboration
+instead of reimplementation.</p>
+</body>
+</html>

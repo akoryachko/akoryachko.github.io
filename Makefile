@@ -8,7 +8,7 @@ init: install
 clean:
 	rm -rf .venv
 
-update: countries copy-resume
+update: countries copy-resume blog-posts
 
 qc:
 # 	ruff check --fix --diff src/
@@ -31,3 +31,6 @@ copy-resume:
 	else \
 		echo "File not found: $(RESUME_FILE)"; \
 	fi
+
+blog-posts:
+	cp -rf ../blog_posts/pyspark_to_production/pyspark_to_production.html blog_posts/
