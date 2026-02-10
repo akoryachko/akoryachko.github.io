@@ -750,10 +750,10 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a h
 notebook is the ability to experiment quickly while still using
 production-ready code. Experimentation typically falls into two
 categories: parameter tuning and prototyping new logic.</p>
-<p><strong>Parameter-level experimentation</strong> Many experiments can
-be performed by simply modifying configuration values and rerunning the
-relevant stages. This is the safest and fastest way to explore model
-behavior, as it requires no code changes.</p>
+<p><strong>Parameter-level experimentation</strong><br />
+Many experiments can be performed by simply modifying configuration
+values and rerunning the relevant stages. This is the safest and fastest
+way to explore model behavior, as it requires no code changes.</p>
 <p>For example, to evaluate the impact of a smaller test set, update the
 configuration directly on the job instance and rerun the training and
 validation stages:</p>
@@ -764,12 +764,12 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a h
 <p>Because the pipeline stages are independent, only the affected parts
 need to be rerun. This makes parameter tuning fast and encourages
 systematic experimentation.</p>
-<p><strong>Local prototyping</strong> Some experiments go beyond
-parameter changes and require trying out new ideas that are not yet part
-of the production code. For example, you may want to quickly try out a
-different model or a feature-processing tweak. In such cases, the goal
-is to prototype <strong>without modifying the repository</strong>,
-keeping experiments local to the notebook.</p>
+<p><strong>Local prototyping</strong><br />
+Some experiments go beyond parameter changes and require trying out new
+ideas that are not yet part of the production code. For example, you may
+want to quickly try out a different model or a feature-processing tweak.
+In such cases, the goal is to prototype <strong>without modifying the
+repository</strong>, keeping experiments local to the notebook.</p>
 <p>Suppose we want to try a Gradient-Boosted Tree regressor instead of
 the default model. We can define a modified training function directly
 in a notebook cell:</p>
@@ -1054,11 +1054,11 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a h
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    ...</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    tip_model.sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>] <span class="op">=</span> spark.createDataFrame(generate_rows(Trip, data, columns))</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div>
-<p><strong>Parameterizing tests</strong> <code>pytest</code> also allows
-running the same test logic with multiple input combinations. This is
-especially useful for validating edge cases and understanding exactly
-which inputs cause failures. For example, airport filtering can be
-tested as follows:</p>
+<p><strong>Parameterizing tests</strong><br />
+<code>pytest</code> also allows running the same test logic with
+multiple input combinations. This is especially useful for validating
+edge cases and understanding exactly which inputs cause failures. For
+example, airport filtering can be tested as follows:</p>
 <div class="sourceCode" id="cb35"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.mark.parametrize</span>(</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">&quot;pickup_location_id&quot;</span>, <span class="st">&quot;dropoff_location_id&quot;</span>, <span class="st">&quot;n_expected_rows&quot;</span>),</span>
@@ -1083,19 +1083,20 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a h
 <p>Here we test each combination of pickup and dropoff locations
 separately and also passing how many rows we expect after the
 filtering.</p>
-<p><strong>Running the test suite</strong> Before running the tests,
-ensure that <code>__init__.py</code> files are present in both the
-project root and test directories so that Python can correctly resolve
-imports.</p>
+<p><strong>Running the test suite</strong><br />
+Before running the tests, ensure that <code>__init__.py</code> files are
+present in both the project root and test directories so that Python can
+correctly resolve imports.</p>
 <p>Tests can then be executed from the project root with:</p>
 <div class="sourceCode" id="cb36"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytest</span></code></pre></div>
 <p>Optional flags: - <code>-vv</code> to display test names; -
 <code>-s</code> to show print statements and logs.</p>
-<p><strong>Closing the loop</strong> Once the test infrastructure is in
-place, additional test functions should be added to cover the rest of
-the pipeline logic. Tests should be updated alongside code changes and
-run automatically as part of the development workflow.</p>
+<p><strong>Closing the loop</strong><br />
+Once the test infrastructure is in place, additional test functions
+should be added to cover the rest of the pipeline logic. Tests should be
+updated alongside code changes and run automatically as part of the
+development workflow.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Notebooks are an excellent medium for exploration, but they are a
 poor long-term container for production logic. The problem is not the
