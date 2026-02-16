@@ -247,9 +247,15 @@ proof-of-concept notebook over the fence to engineers are common.
 Engineers then take the logic as-is, wrap it into a scheduled job, and
 move on. This approach often results in solutions that are hard to
 understand, modify, and maintain. The problem is amplified in big-data
-applications: data scientists may lack production-grade coding
+applications. Data scientists may lack production-grade coding
 experience, while engineers may not feel confident untangling long,
 monolithic PySpark queries.</p>
+<p>Large language models can help restructure notebook code, but mostly
+at a syntactic level. They can extract functions or reorganize modules,
+yet they do not capture the original intent or implicit assumptions
+behind the transformations. As a result, ownership becomes blurred and
+debugging more difficult, because the reshaped code no longer clearly
+belongs to either the data scientist or the engineer.</p>
 <h2 id="purpose">Purpose</h2>
 <p>This post focuses on practical techniques for bridging the gap
 between a free-form PySpark notebook and modular, production-ready code.
@@ -264,7 +270,7 @@ with standard software engineering practices.</li>
 <ul>
 <li>Data scientists whose PySpark notebooks eventually need to run in
 production.</li>
-<li>Data engineers inheriting notebook-based logic.</li>
+<li>Data engineers who inherit notebook-based logic.</li>
 <li>Teams struggling with unclear ownership between experimentation and
 implementation.</li>
 </ul>
@@ -320,8 +326,8 @@ are:</p>
 </ul>
 <h3 id="step-1.1.-put-code-in-functions">Step 1.1. Put code in
 functions</h3>
-<h4 id="extracting-dataset-loading">Extracting dataset loading</h4>
-<p>We start by removing duplication in dataset loading:</p>
+<p><strong>Extracting dataset loading</strong><br />
+We start by removing duplication in dataset loading:</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> DataFrame</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -339,10 +345,9 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a hr
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>sdfs <span class="op">=</span> extract()</span></code></pre></div>
 <p>Datasets now live in a single dictionary (<code>sdfs</code>), keyed
 by name, which simplifies downstream logic.</p>
-<h4 id="splitting-the-logic-into-functional-pieces">Splitting the logic
-into functional pieces</h4>
-<p>The core processing logic in the prototype notebook is implemented as
-a single chained PySpark query.</p>
+<p><strong>Splitting the logic into functional pieces</strong><br />
+The core processing logic in the prototype notebook is implemented as a
+single chained PySpark query.</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sdf_prepared_data <span class="op">=</span> (</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    sdf_taxi_data</span>
@@ -410,9 +415,8 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a hr
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
 <p>Parameters are kept outside functions to make them easy to override
 later (e.g., via runtime configuration).</p>
-<h4 id="chaining-logic-with-.transform">Chaining logic with
-<code>.transform()</code></h4>
-<p>Instead of creating a new dataframe variable for each step, we use
+<p><strong>Chaining logic with <code>.transform()</code></strong><br />
+Instead of creating a new dataframe variable for each step, we use
 <code>.transform()</code> (available in Spark 2.x+):</p>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sdf_prepared_data <span class="op">=</span> (</span>
@@ -449,9 +453,8 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a hr
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    .transform(exclude_airports_by_location, <span class="st">&quot;dropoff_location_id&quot;</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ...</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<h4 id="grouping-logic-into-abstraction-levels">Grouping logic into
-abstraction levels</h4>
-<p>Filtering and feature engineering form logical units in the
+<p><strong>Grouping logic into abstraction levels</strong><br />
+Filtering and feature engineering form logical units in the
 transformation step of the code:</p>
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_data(sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
@@ -768,8 +771,8 @@ systematic experimentation.</p>
 Some experiments go beyond parameter changes and require trying out new
 ideas that are not yet part of the production code. For example, you may
 want to quickly try out a different model or a feature-processing tweak.
-In such cases, the goal is to prototype <strong>without modifying the
-repository</strong>, keeping experiments local to the notebook.</p>
+In such cases, the goal is to prototype <em>without modifying the
+repository</em>, keeping experiments local to the notebook.</p>
 <p>Suppose we want to try a Gradient-Boosted Tree regressor instead of
 the default model. We can define a modified training function directly
 in a notebook cell:</p>
