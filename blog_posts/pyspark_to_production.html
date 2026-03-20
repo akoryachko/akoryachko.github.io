@@ -254,7 +254,7 @@ monolithic PySpark queries.</p>
 at a syntactic level. They can extract functions or reorganize modules,
 yet they do not capture the original intent or implicit assumptions
 behind the transformations. As a result, ownership becomes blurred and
-debugging more difficult, because the reshaped code no longer clearly
+debugging more difficult because the reshaped code no longer clearly
 belongs to either the data scientist or the engineer.</p>
 <h2 id="purpose">Purpose</h2>
 <p>This post focuses on practical techniques for bridging the gap
@@ -457,35 +457,35 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a hr
 Filtering and feature engineering form logical units in the
 transformation step of the code:</p>
 <div class="sourceCode" id="cb7"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_data(sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        sdf</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        .dropDuplicates()</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        .transform(limit_history_to_a_range)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        .transform(keep_evening_rides_only)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        .transform(exclude_airports_by_location, <span class="st">&quot;pickup_location_id&quot;</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        .transform(exclude_airports_by_location, <span class="st">&quot;dropoff_location_id&quot;</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        .transform(keep_first_n_daily_rides_only)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_features(sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        sdf</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;month&quot;</span>, F.month(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;day_of_week&quot;</span>, F.dayofweek(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;day_of_month&quot;</span>, F.dayofmonth(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        .withColumn(</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;store_and_fwd_flag&quot;</span>,</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            F.when(F.col(<span class="st">&quot;store_and_fwd_flag&quot;</span>) <span class="op">==</span> <span class="st">&quot;N&quot;</span>, <span class="dv">0</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>            .otherwise(<span class="dv">1</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transform() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    sdfs[<span class="st">&quot;prepared_data&quot;</span>] <span class="op">=</span> (</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>]</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        .transform(filter_data)</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        .transform(add_features)</span>
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transform() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    sdfs[<span class="st">&quot;prepared_data&quot;</span>] <span class="op">=</span> (</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        sdfs[<span class="st">&quot;taxi_trip_data&quot;</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        .transform(filter_data)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        .transform(add_features)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_data(sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        sdf</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        .dropDuplicates()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        .transform(limit_history_to_a_range)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        .transform(keep_evening_rides_only)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        .transform(exclude_airports_by_location, <span class="st">&quot;pickup_location_id&quot;</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        .transform(exclude_airports_by_location, <span class="st">&quot;dropoff_location_id&quot;</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        .transform(keep_first_n_daily_rides_only)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_features(sdf: DataFrame) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        sdf</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;month&quot;</span>, F.month(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;day_of_week&quot;</span>, F.dayofweek(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">&quot;day_of_month&quot;</span>, F.dayofmonth(F.col(<span class="st">&quot;pickup_datetime&quot;</span>)))</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        .withColumn(</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;store_and_fwd_flag&quot;</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>            F.when(F.col(<span class="st">&quot;store_and_fwd_flag&quot;</span>) <span class="op">==</span> <span class="st">&quot;N&quot;</span>, <span class="dv">0</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>            .otherwise(<span class="dv">1</span>)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
 <p>At this point, the executable logic shrinks to an ETL-like
 skeleton:</p>
@@ -626,17 +626,18 @@ defined in the configuration dataclass:</p>
 <div class="sourceCode" id="cb16"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> fields</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dataclass_to_argparser(cls) <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> fields(cls):</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        parser.add_argument(</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f&quot;--</span><span class="sc">{</span>f<span class="sc">.</span>name<span class="sc">.</span>replace(<span class="st">&#39;_&#39;</span>, <span class="st">&#39;-&#39;</span>)<span class="sc">}</span><span class="ss">&quot;</span>,</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>            default<span class="op">=</span>f.default,</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>            <span class="bu">type</span><span class="op">=</span>f.<span class="bu">type</span>,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parser</span></code></pre></div>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dataclass_to_argparser(cls) <span class="op">-&gt;</span> argparse.ArgumentParser:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> f <span class="kw">in</span> fields(cls):</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        parser.add_argument(</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f&quot;--</span><span class="sc">{</span>f<span class="sc">.</span>name<span class="sc">.</span>replace(<span class="st">&#39;_&#39;</span>, <span class="st">&#39;-&#39;</span>)<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>            default<span class="op">=</span>f.default,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>            <span class="bu">type</span><span class="op">=</span>f.<span class="bu">type</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parser</span></code></pre></div>
 <p>This approach ensures that:</p>
 <ul>
 <li>all configuration parameters are exposed automatically,</li>
@@ -712,8 +713,9 @@ Next, import the main classes and create the configuration and job
 instances:</p>
 <div class="sourceCode" id="cb20"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark_to_production.src.tip_amount_model <span class="im">import</span> TipAmountModelConfig, TipAmountModel</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> TipAmountModelConfig()</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>job <span class="op">=</span> TipAmountModel(config)</span></code></pre></div>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> TipAmountModelConfig()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>job <span class="op">=</span> TipAmountModel(config)</span></code></pre></div>
 <p>At this point:</p>
 <ul>
 <li>All configuration parameters are accessible via
@@ -1033,22 +1035,20 @@ because recreating it for every test is slow and wasteful. Adding a
 settings module <code>conftest.py</code> will do the trick:</p>
 <div class="sourceCode" id="cb33"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections.abc <span class="im">import</span> Generator</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.fixture</span>(scope<span class="op">=</span><span class="st">&quot;session&quot;</span>)</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> spark() <span class="op">-&gt;</span> Generator:</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    spark: SparkSession <span class="op">=</span> (</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>        SparkSession.builder.master(<span class="st">&quot;local[*]&quot;</span>)</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>        .appName(<span class="st">&quot;testing&quot;</span>)</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">&quot;spark.driver.bindAddress&quot;</span>, <span class="st">&quot;127.0.0.1&quot;</span>)</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">&quot;spark.driver.host&quot;</span>, <span class="st">&quot;127.0.0.1&quot;</span>)</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>        .getOrCreate()</span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> spark</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    spark.sparkContext.stop()</span></code></pre></div>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.fixture</span>(scope<span class="op">=</span><span class="st">&quot;session&quot;</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> spark() <span class="op">-&gt;</span> Generator:</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    spark: SparkSession <span class="op">=</span> (</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>        SparkSession.builder.master(<span class="st">&quot;local[*]&quot;</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>        .appName(<span class="st">&quot;testing&quot;</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">&quot;spark.driver.bindAddress&quot;</span>, <span class="st">&quot;127.0.0.1&quot;</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">&quot;spark.driver.host&quot;</span>, <span class="st">&quot;127.0.0.1&quot;</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>        .getOrCreate()</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> spark</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    spark.sparkContext.stop()</span></code></pre></div>
 <p>An additional benefit of this set up is that tests can now depend on
 the Spark session directly, instead of pulling it from a job instance.
 The test signature changes accordingly:</p>
@@ -1093,8 +1093,11 @@ correctly resolve imports.</p>
 <p>Tests can then be executed from the project root with:</p>
 <div class="sourceCode" id="cb36"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytest</span></code></pre></div>
-<p>Optional flags: - <code>-vv</code> to display test names; -
-<code>-s</code> to show print statements and logs.</p>
+<p>Optional flags:</p>
+<ul>
+<li><code>-vv</code> to display test names;</li>
+<li><code>-s</code> to show print statements and logs.</li>
+</ul>
 <p><strong>Closing the loop</strong><br />
 Once the test infrastructure is in place, additional test functions
 should be added to cover the rest of the pipeline logic. Tests should be
