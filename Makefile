@@ -41,13 +41,13 @@ blog-posts:
 # visualizations
 	pandoc $(BLOG_POSTS_PATH)/fast_visualizations/post_fast_vis.ipynb -f ipynb -t html \
 		-o blog_posts/fast_visualizations.html -s \
-		--syntax-highlighting=zenburn \
+		--highlight-style=zenburn \
 		--standalone \
 		-H <(echo '<style>body{max-width:900px}</style>')
 	cp -rf $(BLOG_POSTS_PATH)/fast_visualizations/pics/ blog_posts/pics/
 # pyspark_to_production
 	pandoc $(BLOG_POSTS_PATH)/pyspark_to_production/blogpost.md -f markdown -t html \
 		-o blog_posts/pyspark_to_production.html \
-		--syntax-highlighting=zenburn \
+		--highlight-style=zenburn \
 		--standalone \
 		-H <(echo '<style>body{max-width:900px}</style>')
