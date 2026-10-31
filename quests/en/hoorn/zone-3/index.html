@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -184,21 +184,17 @@ dialog .card { margin: 0 8px 8px; }
         </header>
         <p class="story">A whole LEGO city is hiding in the old station hall, even Hoorn&#x27;s streets! And you can build things yourself and race little cars there.</p>
         <ul class="challenges"><li class="ch">
-      <span class="num">3.1</span><span class="icon">🔍</span>
-      <div class="body"><div class="ch-title"><b>LEGO Quay</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Find the LEGO Veermanskade quay and count its houses. Later we&#x27;ll go to the real one and check if they built them all!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64545,5.05485">Brick City, Hoorn station hall</a></div></div>
-      <span class="box"></span></li><li class="ch">
-      <span class="num">3.2</span><span class="icon">🎒</span>
+      <span class="num">3.1</span><span class="icon">🎒</span>
       <div class="body"><div class="ch-title"><b>Brick Hunt</b> <span class="coins">🪙×3</span></div>
-      <div class="ch-text">Ask the volunteers in Dutch yourself for the search sheet (speurtocht). What did they say? Translate! Finish the search: the sheet goes in your collection.</div></div>
+      <div class="ch-text">Pick up the search sheet (speurtocht) at the entrance and finish all of it.</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64545,5.05485">Brick City, Hoorn station hall</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">3.3</span><span class="icon">🧱</span>
-      <div class="body"><div class="ch-title"><b>⏱ Racer</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
-      <div class="ch-text">Build a little car in 5 minutes. Then race it on the track: yours against a parent&#x27;s car! Fell apart? Fix it and go again.</div></div>
+      <span class="num">3.2</span><span class="icon">🔍</span>
+      <div class="body"><div class="ch-title"><b>Diorama Train</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
+      <div class="ch-text">Start a train on the big diorama. While it does a lap, who&#x27;s first to spot a LEGO steam engine or a Hoorn house on the diorama? The parent looks too! None found — another lap.</div></div>
       <span class="box"></span></li></ul>
-        <div class="boss"><div class="ch-title"><b>👑 Zone boss: One-Hand Tower</b> <span class="coins">🪙×6</span></div>
-        <div class="ch-text">Your other hand goes behind your back! Build a tower half an arm tall that stands on its own for 5 seconds. Hand came out or tower fell? Start again!</div><span class="box"></span></div>
-        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Coins needed: <b>8</b> 🏁</span></footer>
+        <div class="boss"><div class="ch-title"><b>👑 Zone boss: Gate with a House</b> <span class="coins">🪙×6</span></div>
+        <div class="ch-text">Build a gate with a house on top. A LEGO car must drive through it, and the gate must stand alone for 5 seconds. It falls — start again!</div><span class="box"></span></div>
+        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Coins needed: <b>7</b> 🏁</span></footer>
         </div></section><nav class="pager"><a href="../../../en/hoorn/zone-2/">← 2. Steam Tram</a><a class="next" href="../../../en/hoorn/zone-4/">4. Harbour →</a></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 How to play</h2>
         <ol class="steps"><li>We are one team against Hoorn. 4 zones in one day, with a card for each.</li><li>Challenge done? Tick the box ☐ and colour in the coins 🪙. You lead everyone to all the zone&#x27;s stops with the map yourself? Another 🧭 +2.</li><li>Got enough coins to reach the flag 🏁? The zone is CONQUERED! A sticker on the card and on the zone on the map.</li><li>👑 Boss: a big challenge. It may not work the first time, so try again! ⚔️ Duel: me against the parents. I get the coins for playing either way; the last one (+1) is only for winning. ⏱ Against the clock.</li><li>The challenge number (1.2) is a stop on the map. Spend your coins or save them: the more you have left in the evening, the higher your rank!</li></ol>

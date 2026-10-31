@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -184,21 +184,17 @@ dialog .card { margin: 0 8px 8px; }
         </header>
         <p class="story">В старом зале вокзала спрятался целый город из LEGO — даже улицы Хорна! А ещё там можно строить самому и гонять машинки.</p>
         <ul class="challenges"><li class="ch">
-      <span class="num">3.1</span><span class="icon">🔍</span>
-      <div class="body"><div class="ch-title"><b>LEGO-набережная</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Найди LEGO-набережную Veermanskade и сосчитай на ней дома. Потом пойдём на настоящую — проверим, все ли построили!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64545,5.05485">Brick City, зал вокзала Hoorn</a></div></div>
-      <span class="box"></span></li><li class="ch">
-      <span class="num">3.2</span><span class="icon">🎒</span>
+      <span class="num">3.1</span><span class="icon">🎒</span>
       <div class="body"><div class="ch-title"><b>Кирпичная охота</b> <span class="coins">🪙×3</span></div>
-      <div class="ch-text">Сам спроси по-голландски у волонтёров листок поиска (speurtocht). Что тебе сказали? Переведи! Пройди поиск — листок в коллекцию.</div></div>
+      <div class="ch-text">Возьми у входа листок поиска (speurtocht) и пройди его весь.</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64545,5.05485">Brick City, зал вокзала Hoorn</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">3.3</span><span class="icon">🧱</span>
-      <div class="body"><div class="ch-title"><b>⏱ Гонщик</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
-      <div class="ch-text">За 5 минут собери машинку. Потом гонка на трассе: твоя против машинки родителя! Развалилась — чини и снова.</div></div>
+      <span class="num">3.2</span><span class="icon">🔍</span>
+      <div class="body"><div class="ch-title"><b>Поезд на диораме</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
+      <div class="ch-text">Запусти поезд на большой диораме. Пока он едет круг, кто первым найдёт на диораме LEGO-паровоз или дом Хорна? Родитель тоже ищет! Не нашли — ещё круг.</div></div>
       <span class="box"></span></li></ul>
-        <div class="boss"><div class="ch-title"><b>👑 Босс зоны: Башня одной рукой</b> <span class="coins">🪙×6</span></div>
-        <div class="ch-text">Вторая рука — за спиной! Построй башню высотой в полруки, чтобы простояла сама 5 секунд. Рука вышла или башня упала — сначала!</div><span class="box"></span></div>
-        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Нужно монет: <b>8</b> 🏁</span></footer>
+        <div class="boss"><div class="ch-title"><b>👑 Босс зоны: Ворота с домом</b> <span class="coins">🪙×6</span></div>
+        <div class="ch-text">Построй ворота с домом наверху. Под ними должна проехать LEGO-машинка, а ворота — простоять сами 5 секунд. Упали — сначала!</div><span class="box"></span></div>
+        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Нужно монет: <b>7</b> 🏁</span></footer>
         </div></section><nav class="pager"><a href="../../../ru/hoorn/zone-2/">← 2. Паровой трамвай</a><a class="next" href="../../../ru/hoorn/zone-4/">4. Гавань →</a></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 Как играть</h2>
         <ol class="steps"><li>Мы одна команда против Хорна. 4 зоны за один день — на каждую своя карточка.</li><li>Задание выполнено — галочка ☐ и закрась кружки 🪙. Ведёшь всех по карте ко всем точкам зоны сам — ещё 🧭 +2.</li><li>Набрали монет до флажка 🏁 — зона ЗАХВАЧЕНА! Наклейка на карточку и на зону на карте.</li><li>👑 Босс — большое задание, с первого раза может не выйти — пробуй ещё! ⚔️ Дуэль — я против родителей: за игру монеты мои в любом случае, последняя (+1) — только за победу. ⏱ На время.</li><li>Номер задания (1.2) — это точка на карте. Монеты можно тратить или копить: чем больше останется вечером, тем выше звание!</li></ol>

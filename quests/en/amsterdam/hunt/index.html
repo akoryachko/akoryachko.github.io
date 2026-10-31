@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -176,7 +176,7 @@ dialog .dhead button { font: inherit; font-size: 20px; border: 0; background: #e
 dialog .card { margin: 0 8px 8px; }
 </style></head><body>
 <header class="bar"><div class="crumbs"><a href="../../../en/">City quests</a> › <a href="../../../en/amsterdam/">Amsterdam</a> › <b>City-wide hunt</b></div><nav class="switch side"><span>🧒 Kid</span><a href="../../../en/amsterdam/parent/">👨‍👩‍👦 Parents</a></nav><nav class="switch"><span>EN</span><a href="../../../ru/amsterdam/hunt/" hreflang="ru">RU</a></nav><button class="btn" data-rules>📜 <span class="t">Rules</span></button></header>
-<main><section class="card hunt" style="--c:#333"><div class="fit"><h2>🎯 City-wide hunt</h2><p class="small">Look on every outing, in any zone. Fill a row and get the coins!</p>
+<main><section class="card huntcard" style="--c:#333"><div class="fit"><h2>🎯 City-wide hunt</h2><p class="small">Look on every outing, in any zone. Fill a row and get the coins!</p>
         <ul class="hunt"><li><span class="hunt-text">XXX: three crosses on the brown posts by the road. Stand next to one: does it reach your knee or your waist? <span class="coins">🪙×2</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">The city&#x27;s coat of arms: a shield with XXX, two lions and a crown <span class="coins">🪙×2</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">A bridge number (written on the bridge) <span class="coins">🪙×2</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">A picture stone on a house wall (they were used instead of house numbers!) <span class="coins">🪙×3</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">Windmills: De Gooyer · De Bloem · De Otter · De 1200 Roe · Molen van Sloten · Riekermolen <span class="coins">🪙×4</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">Transport: tram · metro · ferry · bus · train <span class="coins">🪙×3</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li></ul><div class="measures"><b>📏 My measures (measure at home):</b> <span class="ms">Step, cm <span class="blank short"></span></span><span class="ms">Height, cm <span class="blank short"></span></span><span class="ms">Palm, cm <span class="blank short"></span></span><span class="ms">One floor of stairs, sec <span class="blank short"></span></span></div></div></section></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 How to play</h2>
         <ol class="steps"><li>We are one team against Amsterdam. 12 zones in any order, 1–2 per outing.</li><li>Challenge done? Tick the box ☐ and colour in the coins 🪙. You lead everyone to all the stops with the map and no hints? Another 🧭 +2.</li><li>Reached 🏁? The zone is CONQUERED! A sticker on the card and on its number on the big map.</li><li>👑 Boss: a big challenge. It may not work the first time, so try again! ⚔️ Duel: me against the parents. I get the coins for playing either way; the last one (+1) is only for winning. ⏱ Against the clock. 📏 Measures are on the hunt card.</li><li>Coins add up over all the outings. Spend them whenever you like: your rank counts everything you have earned!</li></ol>

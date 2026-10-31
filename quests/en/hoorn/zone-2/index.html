@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -186,22 +186,22 @@ dialog .card { margin: 0 8px 8px; }
         <ul class="challenges"><li class="ch">
       <span class="num">2.1</span><span class="icon">🔍</span>
       <div class="body"><div class="ch-title"><b>Engine Number</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Find the number on our engine and write it down: ______. If it&#x27;s 7742, that&#x27;s Bello, the last engine of its kind in the country!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64563,5.05451">Tramstation Hoorn, Van Dedemstraat 8</a></div></div>
+      <div class="ch-text">Find the bell, the whistle and the number on our engine: ______. Every steam tram engine had a bell — that&#x27;s why they were called &quot;Bello&quot;!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64563,5.05451">Tramstation Hoorn, Van Dedemstraat 8</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">2.2</span><span class="icon">🗣️</span>
-      <div class="body"><div class="ch-title"><b>Piet Translator</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Piets ride on the tram. Ask one in Dutch what their name is and what they&#x27;re carrying. What did they say? Translate for us!</div></div>
+      <span class="num">2.2</span><span class="icon">🚋</span>
+      <div class="body"><div class="ch-title"><b>Window Bingo</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Look out of the tram window! Find a stolp — a farm with a pyramid roof — a windmill, a church tower and sheep. Seen one? Shout and point! Any three of the four — done.</div></div>
       <span class="box"></span></li><li class="ch">
       <span class="num">2.3</span><span class="icon">🚋</span>
       <div class="body"><div class="ch-title"><b>Whistle!</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
-      <div class="ch-text">Guess how many times the engine will whistle on the way to Wognum. A parent guesses too. We count together: whose guess is closest?</div></div>
+      <div class="ch-text">Guess how many times the engine whistles in the first 10 minutes of the ride. The parent guesses too. Count together — whose guess is closer?</div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">2.4</span><span class="icon">🍽️</span>
-      <div class="body"><div class="ch-title"><b>Tiny Pancakes</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Try poffertjes, tiny Dutch pancakes. How many are in a portion? Give them a rating ⭐⭐⭐⭐⭐.</div></div>
+      <span class="num">2.4</span><span class="icon">🗣️</span>
+      <div class="body"><div class="ch-title"><b>Ask a Piet</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Ask a Piet in Dutch what Sinterklaas&#x27;s horse is called and what it likes to eat. What did he say? Translate it for us!</div></div>
       <span class="box"></span></li></ul>
         <div class="boss"><div class="ch-title"><b>👑 Zone boss: Song for Sint</b> <span class="coins">🪙×6</span></div>
-        <div class="ch-text">Sinterklaas gets songs! Sing us the whole of &quot;Sinterklaas kapoentje&quot; on one leg: foot down or lost the words? Start again. Done it? Sing it for Sint!</div><span class="box"></span></div>
+        <div class="ch-text">Sinterklaas loves songs! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!</div><span class="box"></span></div>
         <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Coins needed: <b>9</b> 🏁</span></footer>
         </div></section><nav class="pager"><a href="../../../en/hoorn/zone-1/">← 1. Old Town</a><a class="next" href="../../../en/hoorn/zone-3/">3. Brick City →</a></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 How to play</h2>

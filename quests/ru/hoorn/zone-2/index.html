@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -186,22 +186,22 @@ dialog .card { margin: 0 8px 8px; }
         <ul class="challenges"><li class="ch">
       <span class="num">2.1</span><span class="icon">🔍</span>
       <div class="body"><div class="ch-title"><b>Номер паровоза</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Найди номер на нашем паровозе и запиши: ______. Если 7742 — это Белло, последний такой паровоз в стране!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64563,5.05451">Tramstation Hoorn, Van Dedemstraat 8</a></div></div>
+      <div class="ch-text">Найди на нашем паровозе колокол, свисток и номер: ______. Колокол был у всех паровозов-трамваев — поэтому их и звали «Белло»!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64563,5.05451">Tramstation Hoorn, Van Dedemstraat 8</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">2.2</span><span class="icon">🗣️</span>
-      <div class="body"><div class="ch-title"><b>Переводчик Питов</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">В трамвае едут Питы. Спроси одного по-голландски, как его зовут и что он везёт. Что он ответил? Переведи нам!</div></div>
+      <span class="num">2.2</span><span class="icon">🚋</span>
+      <div class="body"><div class="ch-title"><b>Бинго из окна</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Смотри в окно трамвая! Найди стольп — ферму с крышей-пирамидой, мельницу, церковную башню и овец. Увидел — кричи и показывай! Любые три из четырёх — задание выполнено.</div></div>
       <span class="box"></span></li><li class="ch">
       <span class="num">2.3</span><span class="icon">🚋</span>
       <div class="body"><div class="ch-title"><b>Свисток!</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
-      <div class="ch-text">Угадай, сколько раз свистнет паровоз по дороге до Вогнума. Родитель тоже угадывает. Считаем вместе — чья догадка ближе?</div></div>
+      <div class="ch-text">Угадай, сколько раз свистнет паровоз за первые 10 минут пути. Родитель тоже угадывает. Считаем вместе — чья догадка ближе?</div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">2.4</span><span class="icon">🍽️</span>
-      <div class="body"><div class="ch-title"><b>Блинчики-крошки</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Попробуй поффертьес — крошечные голландские блинчики. Сколько их в порции? Поставь оценку ⭐⭐⭐⭐⭐.</div></div>
+      <span class="num">2.4</span><span class="icon">🗣️</span>
+      <div class="body"><div class="ch-title"><b>Спроси Пита</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Спроси Пита по-голландски, как зовут коня Синтерклааса и что он любит есть. Что он ответил? Переведи нам!</div></div>
       <span class="box"></span></li></ul>
         <div class="boss"><div class="ch-title"><b>👑 Босс зоны: Песня для Синта</b> <span class="coins">🪙×6</span></div>
-        <div class="ch-text">Синтерклаасу поют песню! Спой нам «Sinterklaas kapoentje» целиком на одной ноге: нога вниз или сбился — сначала. Получилось — спой Синту!</div><span class="box"></span></div>
+        <div class="ch-text">Синтерклаасу поют песню! На остановке в Вогнуме спой нам «Sinterklaas kapoentje» целиком на одной ноге: нога вниз или сбился — сначала. Получилось — спой Синту!</div><span class="box"></span></div>
         <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Нужно монет: <b>9</b> 🏁</span></footer>
         </div></section><nav class="pager"><a href="../../../ru/hoorn/zone-1/">← 1. Старый город</a><a class="next" href="../../../ru/hoorn/zone-3/">3. Кирпичный город →</a></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 Как играть</h2>

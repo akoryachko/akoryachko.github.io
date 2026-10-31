@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -184,25 +184,29 @@ dialog .card { margin: 0 8px 8px; }
         </header>
         <p class="story">Здесь стояли корабли, которые плыли в Индию за перцем. Капитан Бонтекуу из Хорна чуть не погиб в таком плавании, а его юнги стали героями книжки!</p>
         <ul class="challenges"><li class="ch">
-      <span class="num">4.1</span><span class="icon">🧭</span>
-      <div class="body"><div class="ch-title"><b>Набережная паромщика</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">С вокзала иди по Grote Noord до площади Весов. Дальше найди у гавани набережную, названную в честь паромщика!</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=52.6382,5.06225">📍 карта</a></div></div>
+      <span class="num">4.1</span><span class="icon">🍽️</span>
+      <div class="body"><div class="ch-title"><b>Рыбка-кибелинг</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Попробуй кибелинг — горячие кусочки жареной рыбы с соусом. Какая это рыба? Найди название на табличке у прилавка. Поставь оценку ⭐⭐⭐⭐⭐.</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64256,5.05688">Hoogland Vis, Gedempte Turfhaven 36</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">4.2</span><span class="icon">📏</span>
-      <div class="body"><div class="ch-title"><b>Узкий и широкий</b> <span class="coins">🪙×3</span></div>
-      <div class="ch-text">Найди на Veermanskade самый узкий дом и измерь шагами. Потом самый широкий. Сколько узких домов влезет в широкий?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6376,5.06286">Veermanskade, дома</a></div></div>
+      <span class="num">4.2</span><span class="icon">🏃</span>
+      <div class="body"><div class="ch-title"><b>⏱ Порох для башни</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
+      <div class="ch-text">У круглой башни хранили порох! ⏱ Принеси 5 разных листьев-«мешков с порохом» к скамейке напротив, по одному за раз. Родитель тоже! Кто первым?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6428,5.0618">Oosterplantsoen у Mariatoren</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">4.3</span><span class="icon">⚔️</span>
-      <div class="body"><div class="ch-title"><b>Лодки в гавани</b> <span class="coins">🪙×2+1</span></div>
-      <div class="ch-text">Угадай, сколько лодок стоит у Veermanskade. Родитель тоже угадывает. Считаем вместе — чья догадка ближе?</div></div>
+      <span class="num">4.3</span><span class="icon">🔍</span>
+      <div class="body"><div class="ch-title"><b>Последние ворота</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Подходя по дорожке вдоль канала, сосчитай арки моста перед воротами. Проход под воротами прямой или кривой? Похожи на твои LEGO-ворота?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64103,5.06869">Oosterpoort, Bij Oosterpoort</a></div></div>
       <span class="box"></span></li><li class="ch">
       <span class="num">4.4</span><span class="icon">🔍</span>
-      <div class="body"><div class="ch-title"><b>Круглая башня</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Обойди башню Hoofdtoren. С одной стороны она круглая, с другой — плоская с острым фронтоном. Плоская сторона смотрит на воду или на город?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63704,5.06313">Hoofdtoren</a></div></div>
+      <div class="body"><div class="ch-title"><b>Морской бой</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Маленькие корабли победили большой испанский флот! Найди в резьбе на домах самый большой корабль среди маленьких. Какой год на угловом доме?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64025,5.06593">Bossuhuizen, Slapershaven / Grote Oost 132</a></div></div>
+      <span class="box"></span></li><li class="ch">
+      <span class="num">4.5</span><span class="icon">📏</span>
+      <div class="body"><div class="ch-title"><b>Подъёмный мост</b> <span class="coins">🪙×3</span></div>
+      <div class="ch-text">Шагами измерь подъёмную часть железного моста. Когда мост поднимут, сколько тебя ростом встанет друг на друга до её края?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63808,5.06309">Мост Hoogebrug</a></div></div>
       <span class="box"></span></li></ul>
         <div class="boss"><div class="ch-title"><b>👑 Босс зоны: Четвёртый юнга</b> <span class="coins">🪙×6</span></div>
-        <div class="ch-text">Встань рядом с тремя бронзовыми юнгами (не залезай!) и замри в позе одного из них на 20 секунд. Шевельнулся — сначала! Кого копируешь?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6371,5.06321">Scheepsjongens van Bontekoe, Hoofd</a></div><span class="box"></span></div>
-        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Нужно монет: <b>10</b> 🏁</span></footer>
+        <div class="ch-text">Встань рядом с тремя бронзовыми юнгами (не залезай!) и замри в позе одного из них на 30 секунд. Родитель смешит тебя, не трогая. Засмеялся — сначала!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6371,5.06321">Scheepsjongens van Bontekoe, Hoofd</a></div><span class="box"></span></div>
+        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Нужно монет: <b>11</b> 🏁</span></footer>
         </div></section><nav class="pager"><a href="../../../ru/hoorn/zone-3/">← 3. Кирпичный город</a><span></span></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 Как играть</h2>
         <ol class="steps"><li>Мы одна команда против Хорна. 4 зоны за один день — на каждую своя карточка.</li><li>Задание выполнено — галочка ☐ и закрась кружки 🪙. Ведёшь всех по карте ко всем точкам зоны сам — ещё 🧭 +2.</li><li>Набрали монет до флажка 🏁 — зона ЗАХВАЧЕНА! Наклейка на карточку и на зону на карте.</li><li>👑 Босс — большое задание, с первого раза может не выйти — пробуй ещё! ⚔️ Дуэль — я против родителей: за игру монеты мои в любом случае, последняя (+1) — только за победу. ⏱ На время.</li><li>Номер задания (1.2) — это точка на карте. Монеты можно тратить или копить: чем больше останется вечером, тем выше звание!</li></ol>

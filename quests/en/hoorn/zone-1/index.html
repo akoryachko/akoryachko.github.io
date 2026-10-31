@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -186,19 +186,27 @@ dialog .card { margin: 0 8px 8px; }
         <ul class="challenges"><li class="ch">
       <span class="num">1.1</span><span class="icon">🧭</span>
       <div class="body"><div class="ch-title"><b>Gate Prince</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Translate &quot;New Street&quot; into Dutch and find it. There&#x27;s a gate with a prince on the roof. How many town coats of arms are on the front?</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=52.64142,5.05988">📍 map</a></div></div>
+      <div class="ch-text">Look for the gate with a prince standing on its roof. Hint: the street is the &quot;newest&quot; one in the old town. How many town coats of arms are on the front?</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=52.64142,5.05988">📍 map</a></div></div>
       <span class="box"></span></li><li class="ch">
       <span class="num">1.2</span><span class="icon">🔍</span>
       <div class="body"><div class="ch-title"><b>Secret Letters</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
       <div class="ch-text">Nearby, on Muntstraat, find the house with the letters VOC. Who will be first to find the letter H? And how many little angels hold the letters?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64139,5.06054">Former VOC-Kamer, Muntstraat 4</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">1.3</span><span class="icon">📸</span>
+      <span class="num">1.3</span><span class="icon">🔍</span>
+      <div class="body"><div class="ch-title"><b>Canal Under Your Feet</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Under Kerkplein square hides a canal more than 500 years old! Find where you can see it: a window, a grate or a line in the paving. Can you see water?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6401,5.05904">Kerkplein, by the Boterhal</a></div></div>
+      <span class="box"></span></li><li class="ch">
+      <span class="num">1.4</span><span class="icon">📸</span>
       <div class="body"><div class="ch-title"><b>Unicorn from Afar</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">On the Roode Steen square, find the red unicorn. Walk as far away as you can while you can still see it, and take a photo from there!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63941,5.05913">Roode Steen</a></div></div>
+      <div class="ch-text">On Roode Steen, find the red unicorn. Step away 10 steps at a time until, at arm&#x27;s length, it hides behind your little fingernail — then take a photo!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63941,5.05913">Roode Steen</a></div></div>
+      <span class="box"></span></li><li class="ch">
+      <span class="num">1.5</span><span class="icon">🏃</span>
+      <div class="body"><div class="ch-title"><b>⏱ Alley to the Harbour</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Streets and alleys lead off the square. ⏱ In 2 minutes, run round the square reading the signs, and stand at the alley that leads to the harbour!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63878,5.05967">Grote Havensteeg by Roode Steen</a></div></div>
       <span class="box"></span></li></ul>
-        <div class="boss"><div class="ch-title"><b>👑 Zone boss: Unicorn Shield</b> <span class="coins">🪙×6</span></div>
-        <div class="ch-text">Stand on one leg and count the round arches on the Waag on the square side. Then say what is on the unicorn&#x27;s shield. Foot down? Start again!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63925,5.05955">Waag, Roode Steen 8</a></div><span class="box"></span></div>
-        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Coins needed: <b>8</b> 🏁</span></footer>
+        <div class="boss"><div class="ch-title"><b>👑 Zone boss: Living Scales</b> <span class="coins">🪙×6</span></div>
+        <div class="ch-text">Cheese was weighed here! Arms out — you&#x27;re the scales, a glove &quot;cheese&quot; on each palm. Walk heel to toe along the Weigh House. A cheese falls — start again!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63925,5.05955">Waag, Roode Steen 8</a></div><span class="box"></span></div>
+        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Coins needed: <b>10</b> 🏁</span></footer>
         </div></section><nav class="pager"><span></span><a class="next" href="../../../en/hoorn/zone-2/">2. Steam Tram →</a></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 How to play</h2>
         <ol class="steps"><li>We are one team against Hoorn. 4 zones in one day, with a card for each.</li><li>Challenge done? Tick the box ☐ and colour in the coins 🪙. You lead everyone to all the zone&#x27;s stops with the map yourself? Another 🧭 +2.</li><li>Got enough coins to reach the flag 🏁? The zone is CONQUERED! A sticker on the card and on the zone on the map.</li><li>👑 Boss: a big challenge. It may not work the first time, so try again! ⚔️ Duel: me against the parents. I get the coins for playing either way; the last one (+1) is only for winning. ⏱ Against the clock.</li><li>The challenge number (1.2) is a stop on the map. Spend your coins or save them: the more you have left in the evening, the higher your rank!</li></ol>

@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -184,25 +184,29 @@ dialog .card { margin: 0 8px 8px; }
         </header>
         <p class="story">Ships that sailed to India for pepper were moored here. Captain Bontekoe from Hoorn nearly died on such a voyage, and his ship&#x27;s boys became the heroes of a book!</p>
         <ul class="challenges"><li class="ch">
-      <span class="num">4.1</span><span class="icon">🧭</span>
-      <div class="body"><div class="ch-title"><b>Ferryman&#x27;s Quay</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">From the station, walk along Grote Noord to the square with the Waag. Then find the quay by the harbour that is named after a ferryman!</div><div class="place"><a href="https://www.google.com/maps/search/?api=1&query=52.6382,5.06225">📍 map</a></div></div>
+      <span class="num">4.1</span><span class="icon">🍽️</span>
+      <div class="body"><div class="ch-title"><b>Kibbeling Fish</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Try kibbeling — hot bites of fried fish with a sauce. What fish is it? Find the name on the sign by the counter. Rate it ⭐⭐⭐⭐⭐.</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64256,5.05688">Hoogland Vis, Gedempte Turfhaven 36</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">4.2</span><span class="icon">📏</span>
-      <div class="body"><div class="ch-title"><b>Narrow and Wide</b> <span class="coins">🪙×3</span></div>
-      <div class="ch-text">On Veermanskade, find the narrowest house and pace it out. Then the widest. How many narrow houses fit into the wide one?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6376,5.06286">Veermanskade, houses</a></div></div>
+      <span class="num">4.2</span><span class="icon">🏃</span>
+      <div class="body"><div class="ch-title"><b>⏱ Powder for the Tower</b> <span class="duel-tag">⚔️</span> <span class="coins">🪙×2+1</span></div>
+      <div class="ch-text">The round tower stored gunpowder! ⏱ Bring 5 different leaves — &quot;powder bags&quot; — to the bench opposite, one at a time. The parent too! Who&#x27;s first?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6428,5.0618">Oosterplantsoen by the Mariatoren</a></div></div>
       <span class="box"></span></li><li class="ch">
-      <span class="num">4.3</span><span class="icon">⚔️</span>
-      <div class="body"><div class="ch-title"><b>Harbour Boats</b> <span class="coins">🪙×2+1</span></div>
-      <div class="ch-text">Guess how many boats are moored at Veermanskade. A parent guesses too. We count together: whose guess is closest?</div></div>
+      <span class="num">4.3</span><span class="icon">🔍</span>
+      <div class="body"><div class="ch-title"><b>The Last Gate</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">As you come along the canal path, count the arches of the bridge in front of the gate. Is the passage under the gate straight or curved? Does it look like your LEGO gate?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64103,5.06869">Oosterpoort, Bij Oosterpoort</a></div></div>
       <span class="box"></span></li><li class="ch">
       <span class="num">4.4</span><span class="icon">🔍</span>
-      <div class="body"><div class="ch-title"><b>Round Tower</b> <span class="coins">🪙×2</span></div>
-      <div class="ch-text">Walk around the Hoofdtoren. On one side it&#x27;s round, on the other it&#x27;s flat with a pointed gable. Does the flat side face the water or the town?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63704,5.06313">Hoofdtoren</a></div></div>
+      <div class="body"><div class="ch-title"><b>Sea Battle</b> <span class="coins">🪙×2</span></div>
+      <div class="ch-text">Little ships beat the big Spanish fleet! Find the biggest ship among the small ones in the carving on the houses. What year is on the corner house?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.64025,5.06593">Bossuhuizen, Slapershaven / Grote Oost 132</a></div></div>
+      <span class="box"></span></li><li class="ch">
+      <span class="num">4.5</span><span class="icon">📏</span>
+      <div class="body"><div class="ch-title"><b>The Drawbridge</b> <span class="coins">🪙×3</span></div>
+      <div class="ch-text">Pace out the lifting part of the iron bridge. When the bridge is raised, how many of you, stacked up, reach its end?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.63808,5.06309">Hoogebrug bridge</a></div></div>
       <span class="box"></span></li></ul>
         <div class="boss"><div class="ch-title"><b>👑 Zone boss: Fourth Ship&#x27;s Boy</b> <span class="coins">🪙×6</span></div>
-        <div class="ch-text">Stand next to the three bronze ship&#x27;s boys (don&#x27;t climb!) and freeze in the pose of one of them for 20 seconds. Moved? Start again! Who are you copying?</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6371,5.06321">Scheepsjongens van Bontekoe, Hoofd</a></div><span class="box"></span></div>
-        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Coins needed: <b>10</b> 🏁</span></footer>
+        <div class="ch-text">Stand next to the three bronze ship&#x27;s boys (don&#x27;t climb!) and freeze in the pose of one of them for 30 seconds. The parent tries to make you laugh without touching. Laugh — start again!</div><div class="place">📍 <a href="https://www.google.com/maps/search/?api=1&query=52.6371,5.06321">Scheepsjongens van Bontekoe, Hoofd</a></div><span class="box"></span></div>
+        <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Coins needed: <b>11</b> 🏁</span></footer>
         </div></section><nav class="pager"><a href="../../../en/hoorn/zone-3/">← 3. Brick City</a><span></span></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 How to play</h2>
         <ol class="steps"><li>We are one team against Hoorn. 4 zones in one day, with a card for each.</li><li>Challenge done? Tick the box ☐ and colour in the coins 🪙. You lead everyone to all the zone&#x27;s stops with the map yourself? Another 🧭 +2.</li><li>Got enough coins to reach the flag 🏁? The zone is CONQUERED! A sticker on the card and on the zone on the map.</li><li>👑 Boss: a big challenge. It may not work the first time, so try again! ⚔️ Duel: me against the parents. I get the coins for playing either way; the last one (+1) is only for winning. ⏱ Against the clock.</li><li>The challenge number (1.2) is a stop on the map. Spend your coins or save them: the more you have left in the evening, the higher your rank!</li></ol>

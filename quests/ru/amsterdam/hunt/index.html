@@ -51,7 +51,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -60,8 +59,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -113,6 +112,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -176,7 +176,7 @@ dialog .dhead button { font: inherit; font-size: 20px; border: 0; background: #e
 dialog .card { margin: 0 8px 8px; }
 </style></head><body>
 <header class="bar"><div class="crumbs"><a href="../../../ru/">Городские квесты</a> › <a href="../../../ru/amsterdam/">Амстердама</a> › <b>Охота по всему городу</b></div><nav class="switch side"><span>🧒 Ребёнку</span><a href="../../../ru/amsterdam/parent/">👨‍👩‍👦 Родителям</a></nav><nav class="switch"><span>RU</span><a href="../../../en/amsterdam/hunt/" hreflang="en">EN</a></nav><button class="btn" data-rules>📜 <span class="t">Правила</span></button></header>
-<main><section class="card hunt" style="--c:#333"><div class="fit"><h2>🎯 Охота по всему городу</h2><p class="small">Ищи в каждой вылазке, в любой зоне. Строчка заполнена — получи монеты!</p>
+<main><section class="card huntcard" style="--c:#333"><div class="fit"><h2>🎯 Охота по всему городу</h2><p class="small">Ищи в каждой вылазке, в любой зоне. Строчка заполнена — получи монеты!</p>
         <ul class="hunt"><li><span class="hunt-text">XXX — три креста на бурых столбиках у дороги. Встань рядом: столбик тебе до колена или до пояса? <span class="coins">🪙×2</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">Герб города: щит с XXX, два льва и корона <span class="coins">🪙×2</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">Номер моста (написан на мосту) <span class="coins">🪙×2</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">Камень-картинка на стене дома (раньше вместо номеров!) <span class="coins">🪙×3</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">Мельницы: De Gooyer · De Bloem · De Otter · De 1200 Roe · Молен ван Слотен · Riekermolen <span class="coins">🪙×4</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li><li><span class="hunt-text">Транспорт: трамвай · метро · паром · автобус · поезд <span class="coins">🪙×3</span></span><span class="hunt-boxes"><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span><span class=dot></span></span></li></ul><div class="measures"><b>📏 Мои мерки (измерь дома):</b> <span class="ms">Шаг, см <span class="blank short"></span></span><span class="ms">Рост, см <span class="blank short"></span></span><span class="ms">Ладонь, см <span class="blank short"></span></span><span class="ms">Этаж по лестнице, сек <span class="blank short"></span></span></div></div></section></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
         <h2>📜 Как играть</h2>
         <ol class="steps"><li>Мы одна команда против Амстердама. 12 зон в любом порядке, 1–2 за вылазку.</li><li>Задание выполнено — галочка ☐ и закрась кружки 🪙. Ведёшь всех по карте ко всем точкам без подсказок — ещё 🧭 +2.</li><li>Добрались до 🏁 — зона ЗАХВАЧЕНА! Наклейка на карточку и на номер на большой карте.</li><li>👑 Босс — большое задание, с первого раза может не выйти — пробуй ещё! ⚔️ Дуэль — я против родителей: за игру монеты мои в любом случае, последняя (+1) — только за победу. ⏱ На время. 📏 Мерки — на карточке охоты.</li><li>Монеты копятся за все вылазки. Тратить можно когда хочешь — звание считается по всем заработанным!</li></ol>
