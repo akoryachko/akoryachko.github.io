@@ -37,7 +37,7 @@ li { margin: .15em 0; }
 .map img { position: absolute; }
 .map svg { position: absolute; left: 0; top: 0; }
 .attr { position: absolute; right: 2px; bottom: 1px; font-size: 7px; color: #555; background: rgba(255,255,255,.8); padding: 0 2px; }
-.route { fill: none; stroke: #222; stroke-width: 2.5; stroke-dasharray: 7 6; }
+.route { fill: none; stroke: var(--zc, #222); stroke-width: 2.5; stroke-dasharray: 7 6; }
 .map img { filter: grayscale(1) contrast(.75) brightness(1.12); }
 .land { fill: #f7f7f7; }
 .green { fill: #e6e6e6; fill-rule: evenodd; }
@@ -48,16 +48,16 @@ li { margin: .15em 0; }
 .foot { fill: none; stroke: #999; stroke-width: .9; stroke-dasharray: 2 2; }
 .rail { fill: none; stroke: #666; stroke-width: 1.2; stroke-dasharray: 6 3; }
 .sname { font-size: 11px; font-weight: bold; fill: #000; text-anchor: middle; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
-.zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
+.zarea-edge { fill: var(--zc, #111); stroke: var(--zc, #111); stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
+.stop { fill: var(--zc, #111); stroke: #fff; stroke-width: 1.5; }
 .cam rect { fill: #fff; stroke: #111; stroke-width: 1.5; }
 .cam circle { fill: #111; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
 .zarea.small { stroke-width: 20; }
-.badge { fill: #111; stroke: #fff; stroke-width: 2; }
+.badge { fill: var(--zc, #111); stroke: #fff; stroke-width: 2; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
@@ -178,7 +178,7 @@ dialog .dhead button { font: inherit; font-size: 20px; border: 0; background: #e
 dialog .card { margin: 0 8px 8px; }
 </style></head><body>
 <header class="bar"><div class="crumbs"><a href="../../../ru/">Городские квесты</a> › <a href="../../../ru/hoorn/">Хорна</a> › <b>🏙️ 3. Кирпичный город</b></div><nav class="switch side"><span>🧒 Ребёнку</span><a href="../../../ru/hoorn/zone-3/parent/">👨‍👩‍👦 Родителям</a></nav><button class="btn" data-rules>📜 <span class="t">Правила</span></button></header>
-<main><section class="card zone" style="--c:#333"><div class="fit">
+<main><section class="card zone" style="--c:#333;--t:#e7e7e7"><div class="fit">
         <header class="zone-head">
           <span class="zemoji-big">🏙️</span>
           <div class="zh"><div class="kicker">Зона 3 · День 1</div><h2>Кирпичный город</h2></div>
@@ -197,7 +197,7 @@ dialog .card { margin: 0 8px 8px; }
         <div class="boss"><div class="ch-title"><b>👑 Босс зоны: Ворота с домом</b> <span class="coins">🪙×6</span></div>
         <div class="ch-text">Построй ворота с домом наверху. Под ними должна проехать LEGO-машинка, а ворота — простоять сами 5 секунд. Упали — сначала!</div><span class="box"></span></div>
         <footer class="zone-foot"><div class="track"><span>🪙</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🏁</span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flag">🧭</span><span class="dot"></span><span class="dot"></span></div><span class="need">Нужно монет: <b>7</b> 🏁</span></footer>
-        </div></section><nav class="pager"><a href="../../../ru/hoorn/zone-2/">← 2. Паровой трамвай</a><a class="next" href="../../../ru/hoorn/zone-4/">4. Гавань →</a></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333"><div class="fit">
+        </div></section><nav class="pager"><a href="../../../ru/hoorn/zone-2/">← 2. Паровой трамвай</a><a class="next" href="../../../ru/hoorn/zone-4/">4. Гавань →</a></nav></main><dialog id="rules"><div class="dhead"><button aria-label="close">✕</button></div><section class="card rules" style="--c:#333;--t:#e7e7e7"><div class="fit">
         <h2>📜 Как играть</h2>
         <ol class="steps"><li>Мы одна команда против Хорна. 4 зоны за один день — на каждую своя карточка.</li><li>Задание выполнено — галочка ☐ и закрась кружки 🪙. Ведёшь всех по карте ко всем точкам зоны сам — ещё 🧭 +2.</li><li>Набрали монет до флажка 🏁 — зона ЗАХВАЧЕНА! Наклейка на карточку и на зону на карте.</li><li>👑 Босс — большое задание, с первого раза может не выйти — пробуй ещё! ⚔️ Дуэль — я против родителей: за игру монеты мои в любом случае, последняя (+1) — только за победу. ⏱ На время.</li><li>Номер задания (1.2) — это точка на карте. Монеты можно тратить или копить: чем больше останется вечером, тем выше звание!</li></ol>
         <div class="legend"><span class="leg">🔍 Найди и посчитай</span><span class="leg">🧭 Тропа</span><span class="leg">🍽️ Попробуй</span><span class="leg">📸 Фото-задание</span><span class="leg">🧱 Построй</span><span class="leg">🎒 Собери</span><span class="leg">🚋 Поездка</span><span class="leg">🗣️ Скажи по-местному</span><span class="leg">🏃 Движение</span><span class="leg">⚔️ Дуэль</span><span class="leg">❓ Угадай</span><span class="leg">📏 Измерь и посчитай</span></div>
