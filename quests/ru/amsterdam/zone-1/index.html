@@ -10,6 +10,9 @@ a { color: inherit; }
 .sheet:last-child { page-break-after: auto; }
 .sheet::after { content: "✂"; position: absolute; left: 148.5mm; top: 0; bottom: 0; border-left: 0.4mm dashed #999; color: #999; font-size: 10pt; padding-left: 1mm; }
 .card { width: 148.5mm; height: 210mm; padding: 7mm; overflow: hidden; }
+/* kid sheets are cut in the middle and filed in a ring binder: a hole margin at the cut edge */
+.binder > .card:first-child { padding: 7mm 15mm 7mm 4mm; }
+.binder > .card:last-child { padding: 7mm 4mm 7mm 15mm; }
 .fit { height: 100%; overflow: hidden; border: 1mm solid var(--c, #333); border-radius: 6mm; padding: 5mm 5.5mm; font-size: 11pt; line-height: 1.3; display: flex; flex-direction: column; }
 h1 { font-size: 2.1em; margin: .2em 0; line-height: 1.1; }
 h2 { font-size: 1.45em; margin: 0 0 .35em; line-height: 1.15; }
